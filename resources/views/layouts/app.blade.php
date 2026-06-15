@@ -8,47 +8,73 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background: #111827;
+        }
+
+        .sidebar a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .sidebar a:hover {
+            background: #1f2937;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .navbar {
+            background: #0f172a;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <span class="navbar-brand">
-            Agenda de Tarefas
-        </span>
-    </div>
+<nav class="navbar navbar-dark px-3">
+    <span class="navbar-brand">📋 Agenda de Tarefas</span>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-md-2 bg-dark text-white vh-100 p-3">
-            <h5>Menu</h5>
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar p-3">
+            <h6 class="text-secondary mb-3">Menu</h6>
 
-         <ul class="nav flex-column">
-             <a href="/" class="nav-link text-white">
-             Dashboard
-             </a>
-
-            <a href="/tarefas" class="nav-link text-white">
-                Tarefas
-            </a>
-
-            <a href="/categorias" class="nav-link text-white">
-                Categorias
-            </a>
-
-            <a href="/estatisticas" class="nav-link text-white">
-                Estatísticas
-            </a>
-          </ul>
+            <a href="/">🏠 Dashboard</a>
+            <a href="/tarefas">📝 Tarefas</a>
+            <a href="/categorias">📂 Categorias</a>
+            <a href="{{ route('estatisticas') }}">📊 Estatísticas</a>
         </div>
 
+        <!-- Conteúdo -->
         <div class="col-md-10 p-4">
-            @yield('content')
+            <div class="content">
+                @yield('content')
+            </div>
         </div>
 
     </div>

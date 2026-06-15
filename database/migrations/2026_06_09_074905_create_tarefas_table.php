@@ -12,9 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tarefas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+    $table->id();
+
+    $table->string('tarefa');
+
+    $table->text('descricao')->nullable();
+
+    $table->foreignId('categoria_id')
+          ->constrained('categorias');
+
+    $table->enum('estado', [
+        'Por Iniciar',
+        'Em Curso',
+        'Concluída'
+    ])->default('Por Iniciar');
+
+    $table->timestamps();
+});
     }
 
     /**
